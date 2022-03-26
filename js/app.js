@@ -1,69 +1,100 @@
 // console.log('Fear is the mind killer.');
 
-// SECTION #1
 
-class Person {
-  static eyeColors() {
-    return ["blue", "green", "brown"];
-  }
-  constructor(name, age, eyes, hair) {
-    this.arms = 2;
-    this.legs = 2;
-    this.eyes = eyes;
-    this.hair = hair;
-    this.age = age;
-    this.name = name;
-  }
-  setHair(hairColor) {
-    this.hair = hairColor;
-  }
-  greet(otherPerson) {
-    console.log("hi there " + otherPerson + "!");
-  }
-  cat() {
-    console.log("Her name is Luna!");
-  }
-};
-
-const me = new Person('Jonathan', 33, 'brown', 'brown');
-
-class SuperHero extends Person {
-  chat() {
-    console.log('Hi there, I\'m Jonathan');
-    super.cat();
-  }
-}
-
-const superman = new SuperHero('Clark Kent', 1000, 'blue', 'black', Person.eyeColors()[0])
-
-
-
-// SECTION #2
+// NOTE - V1
 
 // class Person {
-//   static eyeColors(){
-//     return ['blue', 'green', 'brown']
+//   greet(){
+//     console.log('Hi.');
 //   }
-//   constructor(name, age){
-//     this.name = name;
-//     this.age = age;
+// };
+
+// const me = new Person();
+// me.greet()
+
+
+// NOTE - V2
+
+// class Person {
+//   greet(name){
+//     console.log('Hi ' + name + '!');
+//   }
+//   jump(){
+//     console.log('Wheee!')
+//   }
+// };
+
+// const me = new Person();
+// me.greet('Jonathan');
+// me.jump();
+
+
+// NOTE - V3
+
+// class Person {
+//   greet(name) {
+//     console.log("Hi " + name + "!");
+//   }
+//   jump() {
+//     console.log("Wheee!");
 //   }
 // }
 
-// const me = new Person('Jonathan', 33, Person.eyeColors()[0])
+// const me = new Person();
+// me.greet("Jonathan");
+// me.jump();
 
 
+// NOTE - V4
 
-// SECTION #3. Create A Factory
+// class Person {
+//   constructor(hair_color, eye_color){
+//     this.hair = hair_color;
+//     this.eyes = eye_color;
+//   }
+//   setHair(hairColor){
+//     this.hair = hairColor;
+//   }
+//   greet(name) {
+//     console.log("Hi " + name + "!");
+//   }
+//   jump() {
+//     console.log("Wheee!");
+//   }
+// }
+
+// class SuperHero extends Person {
+//   constructor(hair_color, eye_color){
+//     super(hair_color, eye_color);
+//     this.superPowers = ['flight', 'superhuman strength'];
+//   }
+//   fly() {
+//     console.log("Up up and away!");
+//   }
+//   greet(name) {
+//     console.log("Greetings " + name + "!");
+//   }
+//   jump() {
+//     super.jump();
+//     this.fly();
+//   }
+// }
+
+// const me = new Person('red', 'brown');
+// const superman = new SuperHero('red', 'brown');
+// console.log(superman);
+
+
+// NOTE - V5
 
 // class Car {
 //   constructor(serialNumber){
 //     this.serialNumber = serialNumber;
 //   }
 //   drive(){
-//     console.log('Vroom vroom');
+//     console.log('vroom, vroom.');
 //   }
-// }
+// };
 
 // const factory = {
 //   cars: [],
@@ -74,8 +105,11 @@ const superman = new SuperHero('Clark Kent', 1000, 'blue', 'black', Person.eyeCo
 //   },
 //   findCar(index){
 //     return this.cars[index];
-//   },
-// }
+//   }
+// };
+
+
+// NOTE - V6
 
 class Car {
   constructor(maker, serialNumber){
@@ -83,9 +117,9 @@ class Car {
     this.serialNumber = serialNumber;
   }
   drive(){
-    console.log('Vroom vroom');
+    console.log('Vroom, vroom.');
   }
-}
+};
 
 class Factory {
   constructor(company){
@@ -100,4 +134,4 @@ class Factory {
   findCar(index){
     return this.cars[index];
   }
-}
+};
