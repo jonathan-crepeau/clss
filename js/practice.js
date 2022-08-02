@@ -135,13 +135,18 @@ console.log(seal);
 const catOfPrey = class extends animal {
     static description = 'I am a class instance of a big cat.';
     static typesOfCats = ['lion', 'tiger', 'cheetah', 'leopard', 'jaguar'];
-    constructor(animalType, color, size) {
+    constructor(name, animalType, color, size) {
         super(animalType, color, size)
+        this.name = name;
     }
     sound() {
         return 'ROAR.'
     }
 }
 
+// console.log(catOfPrey.typesOfCats);
+
 const simba = new catOfPrey('lion', 'yellow/tan', 'mf big!');
-console.log(simba);
+
+const mufasa = new catOfPrey('Mufasa', catOfPrey.typesOfCats[0], 'yellow', 'large');
+console.log(mufasa)
