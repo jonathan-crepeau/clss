@@ -21,6 +21,9 @@ class Person {
     }
 }
 
+const me = new Person('Jonathan', 34, 'brown', 'brown');
+// console.log(me);
+
 // SECTION - Class Declaration to extend Person class.
 // Class declarations !MUST! include a name. To remove 'SuperHero' below would throw a syntax error in the console.
 class SuperHero extends Person {
@@ -43,17 +46,52 @@ class SuperHero extends Person {
     }
 }
 
+const superman = new SuperHero('Clark Kent', 30, 'blue', 'black');
+// console.log(superman);
+
 // SECTION - Class Expression to extend Person class.
 // In this case, the class expressino omits a class name. 'supervillian.name ==> supervillian' in the console.
 const supervillian = class extends Person {
+    myName() {
+        return this.name;
+    }
     greet(){
         console.log('Greeetings, mere mortals.');
     }
 }
 
 const ursula = new supervillian('Ursula', 1000, 'black', 'white');
+// console.log(ursula);
 
-const superman = new SuperHero('Clark Kent', 30, 'blue', 'black');
-console.log(superman);
-const me = new Person('Jonathan', 34, 'brown', 'brown');
-// console.log(me);
+// const dracula = new supervillian('Dracula', 1000000, 'black', 'black');
+
+
+
+// SECTION - Getters & Setters
+
+class Civilian {
+    constructor(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+    greet() {
+        return 'Hello there!';
+    }
+    scream() {
+        return 'AHHHHHHHHH!';
+    }
+    // NOTE protagonist.fullName:
+    get fullName() {
+        return `${this.firstName} ${this.lastName}`;
+    }
+    // NOTE protagonist.fullName = 'Lord Voldemort':
+    set fullName(value) {
+        [this.firstName, this.lastName] = value.split(" ");
+    }
+    set assignAge(value) {
+        this.age = value;
+    }
+}
+
+const protagonist = new Civilian('Peter', 'Jackson');
+console.log(protagonist);
