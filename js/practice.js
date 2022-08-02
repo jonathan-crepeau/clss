@@ -113,3 +113,35 @@ let randomBloke = {
     this._name = value;
     }
 }
+
+
+// SECTION - Static methods
+
+const animal = class {
+    static description = 'I am a class instance for a single animal.';
+    constructor(animalType, color, size) {
+        this.animalType = animalType;
+        this.color = color;
+        this.size = size;
+    }
+    sound() {
+        return '[ Animal Noise ]';
+    }
+}
+
+const seal = new animal('seal', 'grey', 'several feet');
+console.log(seal);
+
+const catOfPrey = class extends animal {
+    static description = 'I am a class instance of a big cat.';
+    static typesOfCats = ['lion', 'tiger', 'cheetah', 'leopard', 'jaguar'];
+    constructor(animalType, color, size) {
+        super(animalType, color, size)
+    }
+    sound() {
+        return 'ROAR.'
+    }
+}
+
+const simba = new catOfPrey('lion', 'yellow/tan', 'mf big!');
+console.log(simba);
