@@ -94,4 +94,22 @@ class Civilian {
 }
 
 const protagonist = new Civilian('Peter', 'Jackson');
-console.log(protagonist);
+// console.log(protagonist);
+
+
+
+// SECTION - Smarter getters/setters
+// NOTE !!! - The object or class member(s) need a different name than the names used with the getters/setters, otherwise they keep calling themselves and you get a 'RangeError, maximum call stack size exceeded:
+
+let randomBloke = {
+    get name() {
+        return this._name;
+    },
+    set name(value) {
+        if(value.length < 4) {
+            console.log("Name is too short, need at least 4 characters.")
+            return;
+        }
+    this._name = value;
+    }
+}
