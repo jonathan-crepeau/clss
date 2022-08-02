@@ -36,6 +36,15 @@ console.log(katara)
 
 
 class WaterBender extends Bender {
-    // extraabilities = [healing, etc., none]
-    // constructor (name, age, nation, rank, extraAbilities)
+    static specialities = ['Healing', 'Bloodbending', 'None'];
+    constructor(name, age, nation, rank, speciality) {
+        super (name, age, nation, rank);
+        this.speciality = speciality;
+    }
+    greeting() {
+        return '[ Water drips ]';
+    }
 }
+
+const korra = new WaterBender('Korra', 17, 'Water', 'Master', 'Bloodbending');
+console.log(korra);
