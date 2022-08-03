@@ -18,10 +18,20 @@ class Person {
 }
 
 const tyLee = new Person('Ty Lee', 16, 'Fire Nation');
-console.log(tyLee);
+// console.log(tyLee);
 
 class Bender extends Person {
     static bendingRank = ['Apprentice', 'Journeyperson', 'Master', 'Adept'];
+    // NOTE - MDN says that I need to use 'super' to access any properties of a super class. However, you can see below that 'this.nations' results in the same console log as 'super.nations':
+    // static {
+    //     console.log(this.nation);
+    // }
+    // static {
+    //     console.log(this.description)
+    // }
+    static addition(val1, val2) {
+        return val1 + val2;
+    }
     constructor(name, age, nation, rank) {
         super(name, age, nation);
         this.rank = rank;
@@ -32,7 +42,7 @@ class Bender extends Person {
 }
 
 const katara = new Bender('Katara', 14, 'Water', Bender.bendingRank[1]);
-console.log(katara)
+// console.log(katara)
 
 
 class WaterBender extends Bender {
@@ -47,4 +57,4 @@ class WaterBender extends Bender {
 }
 
 const korra = new WaterBender('Korra', 17, 'Water', 'Master', 'Bloodbending');
-console.log(korra);
+// console.log(korra);
