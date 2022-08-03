@@ -57,9 +57,10 @@ for (let a = 0; a < 3; a++) {
 // SECTION - Factory Object as an instantiation of a class:
 
 class Vehicle {
-    constructor(maker, serialNumber) {
+    constructor(maker, serialNumber, color) {
         this.maker = maker;
         this.serialNumber = serialNumber;
+        this.color = color;
     }
     drive() {
         console.log('Vroom vroom');
@@ -72,7 +73,7 @@ class Factory {
         this.company = company;
     }
     generateCar() {
-        const newCar = new Vehicle(this.company, Math.floor(Math.random() * (20 - 0) + 0));
+        const newCar = new Vehicle(this.company, Math.floor(Math.random() * (20 - 0) + 0), 'green');
         this.cars.push(newCar);
         return newCar;
     }
@@ -93,3 +94,7 @@ bmw.generateCar();
 
 // console.log(bmw.findCar(0));
 // console.log(toyota.findCar(0));
+
+
+
+// SECTION - 

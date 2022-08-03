@@ -57,4 +57,4 @@ class WaterBender extends Bender {
 }
 
 const korra = new WaterBender('Korra', 17, 'Water', 'Master', 'Bloodbending');
-// console.log(korra);
+console.log(korra);
