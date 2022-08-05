@@ -1,4 +1,4 @@
-console.log('Fear is the mind killer.');
+// console.log('Fear is the mind killer.');
 
 const personPrototype = {
     greet() {
