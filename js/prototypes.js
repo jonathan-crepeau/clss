@@ -50,3 +50,28 @@ class Cat {
 
 const luna = new Cat('Luna', 'black');
 console.log(luna);
+console.log(luna.speak())
+luna.speak = 'hiss';
+// console.log(luna.speak());
+    // throws a type error
+
+
+
+
+// SECTION - Protoype property vs. __proto__
+
+function Fish(name) {
+    this.name = name;
+}
+
+const fishPrototype = {
+    greet() {
+        return 'Hello, I am a ' + this.name + ' fish!';
+    }
+}
+
+
+Object.assign(Fish.prototype, fishPrototype);
+const salmon = new Fish('Salmon');
+
+console.log(salmon);
