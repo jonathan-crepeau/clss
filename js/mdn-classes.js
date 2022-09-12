@@ -130,19 +130,19 @@
 
 // SECTION Static init block access to private fields
 
-let getDPrivateField;
+// let getDPrivateField;
 
-class D {
-    #privateField;
-    constructor(inputString) {
-        this.#privateField = inputString;
-    }
-    static {
-        getDPrivateField = (input) => input.#privateField;
-    }
-}
+// class D {
+//     #privateField;
+//     constructor(inputString) {
+//         this.#privateField = inputString;
+//     }
+//     static {
+//         getDPrivateField = (input) => input.#privateField;
+//     }
+// }
 
-console.log(getDPrivateField(new D('I am a private field')));
+// console.log(getDPrivateField(new D('I am a private field')));
 
 
 
