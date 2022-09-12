@@ -81,16 +81,68 @@
 
 // SECTION Static Intialization Blocks
 
-class Person {
-    static array1 = [1, 2, 3]
-    construtor(age, name) {
-        this.age = age;
-        this.name = name;
+// class Person {
+//     static array1 = [1, 2, 3]
+//     construtor(age, name) {
+//         this.age = age;
+//         this.name = name;
+//     }
+// }
+
+// class Teacher extends Person {
+//     static {
+//         console.log(super.array1);
+//     }
+// }
+
+// SECTION Static Initialization Blocks Console.logs
+
+// NOTE - Static blocks and static field initializers are evaluated in execution order:
+// class Animal {
+//     static field1 = console.log('Field1 called');
+//     static {
+//         console.log('Static block 1 called');
+//     }
+//     static field2 = console.log('field2 called');
+//     static {
+//         console.log('Static block 2 called');
+//     }
+// }
+
+
+// SECTION 'this' & 'super'
+
+// Note - Seems the # or _ (underscore) character does prevent a private field from being acccessed with 'this':
+// class A {
+//     static field = 'A static field';
+//     static #field2 = 'A second static field';
+//     static {
+//         console.log(this.field);
+//         console.log(this.field2);
+//     }
+// }
+
+// class B extends A {
+//     static { console.log(super.field); }
+//     static { console.log(super.field2); }
+// }
+
+
+// SECTION Static init block access to private fields
+
+let getDPrivateField;
+
+class D {
+    #privateField;
+    constructor(inputString) {
+        this.#privateField = inputString;
+    }
+    static {
+        getDPrivateField = (input) => input.#privateField;
     }
 }
 
-class Teacher extends Person {
-    static {
-        console.log(super.array1);
-    }
-}
+console.log(getDPrivateField(new D('I am a private field')));
+
+
+
