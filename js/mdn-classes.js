@@ -144,5 +144,52 @@
 
 // console.log(getDPrivateField(new D('I am a private field')));
 
+// function Test(value) {
+//     this.value = value;
+// }
+
+// const newObject = new Test('A');
+// console.log(Object.getPrototypeOf(newObject));
+
+// // N
+// Test.prototype.log = function() {
+//     console.log("Second implementation: " + this.value);
+// }
+
+// console.log(Test);
+// console.log(Object.getPrototypeOf(newObject));
+
+const personObject = {
+    greet() {
+        console.log(`Hello, my name is ${this.name}!`)
+    }
+}
+
+function Person(name) {
+    this.name = name;
+}
+
+Object.assign(Person.prototype, personObject);
+
+function Student(name, age) {
+    this.name = name;
+    this.age = age;
+}
+
+Object.assign(Student.prototype, Person.prototype)
+
+const jonathan = new Student('Jonathan', 34);
+console.log(jonathan.greet())
 
 
+
+// const philosophy = new ClassB('Philosophy 101', '2400')
+
+// console.log(Object.getPrototypeOf(ClassA));
+
+// let object = philosophy;
+
+// do {
+//     object = Object.getPrototypeOf(object);
+//     console.log(object);
+// } while (object)
