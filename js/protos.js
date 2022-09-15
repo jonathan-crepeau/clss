@@ -163,18 +163,88 @@ function Human(name){
 // console.log(Human.prototype.constructor)
 
 // NOTE - This logs the anonymous prototype object of the next object up the prototype chain -- 'Object()' in this case.
-console.log(Object.getPrototypeOf(Human.prototype));
+// console.log(Object.getPrototypeOf(Human.prototype));
 
 // NOTE - After adding a new method to the Human.prototype's anonymous object, you can check with a log of 'Human.prototype':
 Human.prototype.greet = function(){
     return `Hello, my name is ${this.name}.`;
 }
-console.log(Human.prototype);
+// console.log(Human.prototype);
+
+Human.prototype.yell = function() {
+    return 'AHHHHHH real monsters!'
+}
 
 const penny = new Human('Penny');
 // NOTE - The next two logs show the prototype object of the newly-created object instance, 'penny'. It's the same as the 'console.log(Human.prototype)' above, as Human is the constructor function used to create 'penny'.
-console.log(Object.getPrototypeOf(penny));
-console.log(penny.__proto__); // deprecated
+// console.log(Object.getPrototypeOf(penny));
+// console.log(penny.__proto__); // deprecated
+
+
+// SECTION Building Larger Prototype Chain
+
+function Adult(name) {
+    this.name = name;
+}
+
+Adult.prototype.job = function(){
+    return `Working 9 to 5, just to try and make a living!`;
+}
+
+const auntZelda = new Adult('Zelda');
+const auntHilda = new Adult('Hilda');
+
+Object.setPrototypeOf(Adult.prototype, Human.prototype);
+
+console.log(auntZelda.__proto__);
+// console.log(Object.getPrototypeOf(auntZelda));
+// console.log(auntZelda);
+// console.log(auntZelda.job())
+// console.log(auntZelda.greet())
+// console.log(auntZelda.yell())
+
+
+
+// SECTION Extend Prototype Chain even further
+
+function Child(name) {
+    this.name = name;
+}
+
+// console.log(Human.prototype);
+// console.log(Child.prototype)
+
+// NOTE - Setting new prototype:
+// Object.setPrototypeOf(Child.prototype, Human.prototype);
+
+Child.prototype.giggle = function() {
+    return 'hehehehehehe.'
+}
+const littleGirl = new Child('Kandi Muse');
+const littleBoy = new Child('Aang');
+// console.log(penny.greet())
+
+// NOTE - Success! littleGirl logs greet() function from Human.prototype:
+Object.setPrototypeOf(Child.prototype, Adult.prototype);
+// console.log(littleGirl.greet())
+// console.log(littleGirl.yell())
+
+// NOTE Little girl prototype anonymous object seems to be a copy/clone(?) of the Human.prototype object that is a separate object. Any Child instance still has a Child constructor property, and any new methods/properties added to the Child.prototype. Lastly, Child instances get access up the prototype chain, but any Human instances cannot access properties/methods on Child.prototype (all of this, despite that the returned Child.prototype anon object is titled(?)/named 'Human):
+// console.log(Object.getPrototypeOf(littleGirl));
+console.log(littleGirl.__proto__)
+// console.log(Human.prototype);
+
+// console.log(littleGirl.giggle())
+// console.log(littleBoy.giggle())
+// console.log(littleGirl.job())
+
+// NOTE - Check, new Human instance cannot access Child.prototype properties or methods:
+const bobert = new Human('bobert');
+
+
+
+
+
 
 
 // SECTION Array Prototypes
