@@ -196,7 +196,7 @@ const auntHilda = new Adult('Hilda');
 
 Object.setPrototypeOf(Adult.prototype, Human.prototype);
 
-console.log(auntZelda.__proto__);
+// console.log(auntZelda.__proto__);
 // console.log(Object.getPrototypeOf(auntZelda));
 // console.log(auntZelda);
 // console.log(auntZelda.job())
@@ -231,7 +231,7 @@ Object.setPrototypeOf(Child.prototype, Adult.prototype);
 
 // NOTE Little girl prototype anonymous object seems to be a copy/clone(?) of the Human.prototype object that is a separate object. Any Child instance still has a Child constructor property, and any new methods/properties added to the Child.prototype. Lastly, Child instances get access up the prototype chain, but any Human instances cannot access properties/methods on Child.prototype (all of this, despite that the returned Child.prototype anon object is titled(?)/named 'Human):
 // console.log(Object.getPrototypeOf(littleGirl));
-console.log(littleGirl.__proto__)
+// console.log(littleGirl.__proto__)
 // console.log(Human.prototype);
 
 // console.log(littleGirl.giggle())
@@ -240,11 +240,6 @@ console.log(littleGirl.__proto__)
 
 // NOTE - Check, new Human instance cannot access Child.prototype properties or methods:
 const bobert = new Human('bobert');
-
-
-
-
-
 
 
 // SECTION Array Prototypes
@@ -258,3 +253,126 @@ const bobert = new Human('bobert');
 //     console.log(typeof object)
 //     console.log(object);
 // } while (object)
+
+
+// SECTION Harry Potter Example
+
+function WitchyPerson(){}
+WitchyPerson.prototype.greet = function() {
+    return 'Oh well, why yes, I do live in magical England!';
+}
+WitchyPerson.prototype.dewand = function(){
+    return `EXPELLIARMUS!`;
+}
+WitchyPerson.prototype.kill = function(){
+    return `ALOHOMORA!`
+}
+WitchyPerson.prototype.protect = function() {
+    return `EXPECTO PATRONUM!`
+};
+
+
+function Professor(name, subject) {
+    this.name = name;
+    this.subject = subject;
+}
+Professor.prototype.introduceSelf = function() {
+    return `Hello, I'm Professor ${this.name} and I teach ${this.subject}.`;
+}
+Professor.prototype.pissed = function() {
+    return `That's five points from your house!`;
+}
+Professor.prototype.pleased = function() {
+    return `Excellent, five points awarded to your house!`;
+}
+
+
+function Headmaster(name, subject){
+    this.name = name;
+    this.subject = subject;
+}
+Headmaster.prototype.introduceSelf = function(){
+    return `I'm Headmster ${this.name}, and before I took this office I used to teach ${this.subject} at the school.`
+}
+Headmaster.prototype.award = function(){
+    return `And this year's House Cup goes to ...`;
+}
+Headmaster.prototype.consultHarry = function() {
+    return `It matters not what someone is born, but what they grow to be.`
+}
+
+
+function HeadofHouse(name, house, subject){
+    this.name = name;
+    this.house = house;
+    this.subject = subject;
+}
+HeadofHouse.prototype.introduceSelf = function(){
+    return `My name is Professor ${this.name}, I am Head of House for ${this.house} and I teach ${this.subject}.`;
+}
+
+
+function Pupil(name, house){
+    this.name = name;
+    this.house = house;
+}
+Pupil.prototype.excited = function(){
+    return `I can't believe I was chosen for ${this.house}!`;
+}
+Pupil.prototype.introduceSelf = function() {
+    return `Hello, my name is ${this.name} and I'm in ${this.house}!`;
+}
+
+
+function Gryffindor(name) {
+    this.name = name;
+}
+Gryffindor.prototype.password = function() {
+    return `Don't tell me the Fat Lady's already changed the password agian!`
+}
+
+
+function Ravenclaw(name){
+    this.name = name;
+}
+Ravenclaw.prototype.diadem = function() {
+    return 'They say the diadem of Rowena Ravenclaw still exists here at the school!';
+}
+
+
+
+function Hufflepuff(name){
+    this.name = name;
+}
+Hufflepuff.prototype.about = function(){
+    return 'We just like being so close to the kitchens, lol.';
+}
+
+
+function Slytherin(name){
+    this.name = name;
+}
+Slytherin.prototype.gossip = function(){
+    return 'BITCH, did you hear what happened to Lucius Malfoy?!?';
+}
+
+Object.setPrototypeOf(Professor.prototype, WitchyPerson.prototype);
+Object.setPrototypeOf(Headmaster.prototype, Professor.prototype);
+Object.setPrototypeOf(HeadofHouse.prototype, Professor.prototype);
+
+Object.setPrototypeOf(Pupil.prototype, WitchyPerson.prototype);
+Object.setPrototypeOf(Gryffindor.prototype, Pupil.prototype);
+Object.setPrototypeOf(Hufflepuff.prototype, Pupil.prototype);
+Object.setPrototypeOf(Ravenclaw.prototype, Pupil.prototype);
+Object.setPrototypeOf(Slytherin.prototype, Pupil.prototype);
+
+const dumbledoor = new Headmaster('Dumbledoor', 'Transfiguration');
+const mcgonagall = new HeadofHouse('McGonagall', 'Gryffindor', 'Transfiguration');
+const snape = new Professor('Snape', 'Potions');
+
+const harry = new Gryffindor('Harry Potter');
+const hermione = new Gryffindor('Hermione Granger');
+const ron = new Gryffindor('Ron Weasley');
+const draco = new Slytherin('Draco Malfoy');
+
+console.log(dumbledoor.__proto__);
