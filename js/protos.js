@@ -375,4 +375,34 @@ const hermione = new Gryffindor('Hermione Granger');
 const ron = new Gryffindor('Ron Weasley');
 const draco = new Slytherin('Draco Malfoy');
 
-console.log(dumbledoor.__proto__);
+
+
+// SECTION Mathematic Example - Prototype Chain
+
+function TwoValues(value1, value2){
+    this.value1 = value1;
+    this.value2 = value2;
+}
+
+TwoValues.prototype.add = function() {
+    return this.value1 + this.value2;
+}
+
+const firstTwo = new TwoValues(2, 5);
+console.log(firstTwo.add());
+
+
+function TwoandName(name, value1, value2){
+    this.name = name;
+    this.value1 = value1;
+    this.value2 = value2;
+}
+
+Object.setPrototypeOf(TwoandName.prototype, TwoValues.prototype);
+
+const crepeau = new TwoandName('Jonathan', 7, 2);
+console.log(crepeau.add())
+console.log(crepeau.hasOwnProperty('add'));
+console.log((TwoValues.prototype).hasOwnProperty('add'));
+console.log((TwoandName.prototype).hasOwnProperty('add'));
+
